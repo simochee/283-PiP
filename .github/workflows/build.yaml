@@ -1,5 +1,4 @@
 name: Build Web Extension
-run-name: Build Web Extension (v${{ inputs.version }})
 
 on:
   push:
@@ -9,7 +8,6 @@ on:
     inputs:
       version:
         description: New version of the extension
-        default: '0.0.0'
         required: true
 
 jobs:
@@ -30,7 +28,8 @@ jobs:
       - run: npm run build
         env:
           TARGET: ${{ matrix.build-target }}
+          VERSION: ${{ inputs.version }}
       - uses: actions/upload-artifact@v4
         with:
-          name: '283-pinp_${{ inputs.version }}_${{ matrix.build-target }}'
+          name: 283-pinp_${{ inputs.version || 'beta' }}_${{ matrix.build-target }}
           path: dist
