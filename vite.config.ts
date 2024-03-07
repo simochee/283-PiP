@@ -13,7 +13,7 @@ type WebExtensionManifest = Omit<
   "{{firefox}}.browser_action"?: browser.Manifest.ActionManifest;
 };
 
-const { VERSION = "0.0.0" } = process.env;
+const { VERSION = "0.0.0", TARGET = "chrome" } = process.env;
 
 if (!/^\d+\.\d+\.\d+$/.test(VERSION)) {
   throw new Error(`Invalid version format: ${VERSION}`);
@@ -23,6 +23,7 @@ export default defineConfig({
   plugins: [
     webExtension({
       disableAutoLaunch: true,
+      browser: TARGET,
       manifest(): WebExtensionManifest {
         return {
           "{{chrome}}.manifest_version": 3,

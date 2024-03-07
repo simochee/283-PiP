@@ -1,0 +1,36 @@
+name: Build Web Extension
+run-name: Build Web Extension (v${{ inputs.version }})
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      version:
+        description: New version of the extension
+        default: '0.0.0'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        build-target:
+          - chrome
+          - firefox
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+      - run: corepack enable
+      - run: npm ci
+      - run: npm run build
+        env:
+          TARGET: ${{ matrix.build-target }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: '283-pinp_${{ inputs.version }}_${{ matrix.build-target }}'
+          path: dist
