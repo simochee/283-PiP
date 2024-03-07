@@ -1,7 +1,6 @@
 # 283 PinP
 
 [![chrome web store](https://img.shields.io/chrome-web-store/v/STORE_ID)](https://chromewebstore.google.com/detail/STORE_ID)
-[![mozilla add-on](https://img.shields.io/amo/v/ADDON_ID)](https://addons.mozilla.org/ja/firefox/addon/ADDON_ID)
 
 enza 版のアイドルマスター シャイニーカラーズで、ゲームプレイ画面を Picture-in-Picture で表示するための拡張機能です。
 
@@ -16,6 +15,7 @@ enza 版のアイドルマスター シャイニーカラーズで、ゲーム�
 ## Restriction
 
 - Picture-in-Picture でゲーム画面の操作はできません
+- Firefox は `requestPictureInPicture` メソッドがサポートされていないため利用できません
 
 ## License
 

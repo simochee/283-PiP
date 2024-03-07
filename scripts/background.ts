@@ -38,7 +38,9 @@ browser.contextMenus.onClicked.addListener(async (info, tab) => {
 });
 
 // 拡張機能アイコンから Picture-in-Picture を開く
-browser.action.onClicked.addListener(async (tab) => {
+const browserAction = browser.action ? browser.action : browser.browserAction;
+
+browserAction.onClicked.addListener(async (tab) => {
   await openPictureInPicture(tab);
 });
 
