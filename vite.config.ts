@@ -30,6 +30,8 @@ export default defineConfig({
           "{{firefox}}.manifest_version": 2,
           name: "283 PinP",
           version: VERSION,
+          description:
+            "enza 版 アイドルマスター シャイニーカラーズのゲームプレイ画面を Picture-in-Picture で表示します。",
           icons: {
             32: "icon/32.png",
             48: "icon/48.png",
