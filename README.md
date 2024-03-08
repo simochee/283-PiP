@@ -19,7 +19,7 @@ enza 版のアイドルマスター シャイニーカラーズで、ゲーム�
 
 ## Credit
 
-アイコンには [Wings icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/wings) を利用しています。
+- [Wings icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/wings)
 
 ## License
 
