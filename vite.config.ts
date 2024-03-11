@@ -16,7 +16,7 @@ const manifest = {
   name,
   version: VERSION,
   description:
-    "enza 版 アイドルマスター シャイニーカラーズのゲームプレイ画面を Picture-in-Picture で表示します。",
+    "enza 版 アイドルマスター シャイニーカラーズのゲームプレイ画面を小窓（ Picture-in-Picture ）で開きます。",
   icons: {
     32: "icon/32.png",
     48: "icon/48.png",
