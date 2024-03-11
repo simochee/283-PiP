@@ -1,6 +1,6 @@
 /** @file コンテキストメニューの挙動をインストールする */
 import browser from "webextension-polyfill";
-import { TARGET_MATCHER, MENU_ITEM_ID, OPEN_PINP_COMMAND } from "./const";
+import { TARGET_MATCHER, MENU_ITEM_ID, OPEN_PINP_COMMAND, ENZA_ORIGIN, ENZA_HOME_URL } from "./const";
 
 /**
  * Picture-in-Picture を開く
@@ -41,7 +41,28 @@ browser.contextMenus.onClicked.addListener(async (info, tab) => {
 const browserAction = browser.action ? browser.action : browser.browserAction;
 
 browserAction.onClicked.addListener(async (tab) => {
-  await openPictureInPicture(tab);
+  // 現在のタブが enza であれば Picture-in-Picture を開く
+  if (tab.url) {
+    const url = new URL(tab.url);
+
+    if (url.origin === ENZA_ORIGIN) {
+      await openPictureInPicture(tab);
+      return;
+    }
+  }
+
+  // 開かれているタブに enza があれば、そのタブを開く
+  const tabs = await browser.tabs.query({ url: TARGET_MATCHER });
+
+  for (const tab of tabs) {
+    if (typeof tab.id === "number") {
+      await browser.tabs.update(tab.id, { active: true });
+      return;
+    }
+  }
+
+  // 新しいタブでシャニマスのホームを開く
+  await browser.tabs.create({ url: ENZA_HOME_URL });
 });
 
 // コマンド（ショートカット）から Picture-in-Picture を開く

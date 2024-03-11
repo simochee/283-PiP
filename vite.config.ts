@@ -3,14 +3,17 @@ import webExtension from "vite-plugin-web-extension";
 import { OPEN_PINP_COMMAND, TARGET_MATCHER } from "./scripts/const";
 import browser from "webextension-polyfill";
 
-const { VERSION = "0.0.0", TARGET = "chrome" } = process.env;
+const { VERSION = "0.0.0", TARGET = "chrome", NODE_ENV } = process.env;
 
 if (!/^\d+\.\d+\.\d+$/.test(VERSION)) {
   throw new Error(`Invalid version format: ${VERSION}`);
 }
 
+const isDev = NODE_ENV === "development";
+const name = isDev ? "283 PinP - preview" : "283 PinP";
+
 const manifest = {
-  name: "283 PinP",
+  name,
   version: VERSION,
   description:
     "enza 版 アイドルマスター シャイニーカラーズのゲームプレイ画面を Picture-in-Picture で表示します。",

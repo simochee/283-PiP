@@ -5,6 +5,10 @@ const video = document.createElement("video");
 video.id = "__283player";
 video.muted = true;
 
+if (document.getElementById(video.id)) {
+  throw new Error("video element already exists");
+}
+
 // hide
 video.style.position = "absolute";
 video.style.width = "0";
