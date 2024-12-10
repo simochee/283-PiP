@@ -1,10 +1,11 @@
 import { browser } from "wxt/browser";
+import { openPictureInPicture } from "./pip";
 
 export const handleCommand = () => {
-	browser.commands.onCommand.addListener((command) => {
+	browser.commands.onCommand.addListener(async (command, tab) => {
 		switch (command) {
 			case COMMAND_START_PIP: {
-				console.log("start pip");
+				await openPictureInPicture(tab);
 				break;
 			}
 		}

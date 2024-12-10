@@ -1,5 +1,6 @@
 import { COMMAND_START_PIP, GAME_URL_MATCHER } from "@/utils/const";
 import { browser } from "wxt/browser";
+import { openPictureInPicture } from "./pip";
 
 export const createContextMenu = () => {
 	browser.runtime.onInstalled.addListener(() => {
@@ -11,10 +12,10 @@ export const createContextMenu = () => {
 		});
 	});
 
-	browser.contextMenus.onClicked.addListener((info) => {
+	browser.contextMenus.onClicked.addListener(async (info, tab) => {
 		switch (info.menuItemId) {
 			case COMMAND_START_PIP: {
-				console.log("start pip");
+				await openPictureInPicture(tab);
 				break;
 			}
 		}
