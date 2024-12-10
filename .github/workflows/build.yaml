@@ -17,4 +17,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: 283pip-artifact-${{ github.sha }}
-          path: .output/**/*.zip
+          path: .output/*.zip
