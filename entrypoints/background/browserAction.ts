@@ -1,5 +1,6 @@
 import { GAME_HOME_URL, GAME_ORIGIN, GAME_URL_MATCHER } from "@/utils/const";
 import { browser } from "wxt/browser";
+import { openPictureInPicture } from "./pip";
 
 export const handleClickIcon = () => {
 	browser.action.onClicked.addListener(async (tab) => {
@@ -8,6 +9,7 @@ export const handleClickIcon = () => {
 			const { origin } = new URL(tab.url);
 
 			if (origin === GAME_ORIGIN) {
+				await openPictureInPicture(tab);
 				return;
 			}
 		}
