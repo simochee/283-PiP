@@ -1,24 +1,17 @@
 {
-  "version": "1.0.0",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build"
-  },
-  "packageManager": "npm@10.5.0+sha256.17ca6e08e7633b624e8f870db81a78f46afe119de62bcaf0a7407574139198fc",
-  "devDependencies": {
-    "@tsconfig/vite-react": "^3.0.1",
-    "@types/chrome": "^0.0.262",
-    "@types/node": "^20.11.25",
-    "@types/webextension-polyfill": "^0.10.7",
-    "vite": "^5.1.5",
-    "vite-plugin-web-extension": "^4.1.2"
-  },
-  "dependencies": {
-    "webextension-polyfill": "^0.10.0"
-  },
-  "volta": {
-    "node": "20.11.1"
-  }
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "wxt build",
+		"dev": "wxt",
+		"postinstall": "lefthook install && wxt prepare",
+		"zip": "wxt zip"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"lefthook": "^1.9.0",
+		"sort-package-json": "^2.12.0",
+		"wxt": "^0.19.20"
+	}
 }
