@@ -1,6 +1,9 @@
 name: Build
 
 on:
+  push:
+    branches:
+      - develop
   workflow_dispatch:
 
 jobs:
@@ -17,4 +20,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: 283pip-artifact-${{ github.sha }}
-          path: .output/*.zip
+          path: .output
