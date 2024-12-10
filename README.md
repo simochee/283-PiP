@@ -5,7 +5,7 @@
 <a href="https://chromewebstore.google.com/detail/gjpjhdmdbkiabejljimbnjdpmfdonpjb"><img src="https://img.shields.io/chrome-web-store/v/gjpjhdmdbkiabejljimbnjdpmfdonpjb?style=for-the-badge&logo=Google%20Chrome&logoColor=ffffff&label=Chrome%20Web%20Store&color=4285F4" alt="Chrome Web Store"></a>
 </p>
 
-アイドルマスターシャイニーカラーズのゲーム画面を Picture-in-Picture で表示するブラウザ拡張機能。
+enza 版 アイドルマスター シャイニーカラーズ のゲームプレイ画面を小窓 (Picture-in-Picture) で表示するブラウザ拡張機能。
 
 ## ⛔️ 制限
 

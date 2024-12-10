@@ -1,9 +1,11 @@
+import { GAME_HOME_URL } from "@/utils/const";
+
 /**
  * ゲーム画面の Canvas を Picture-in-Picture で表示する Video 要素にストリーミングさせる
  */
 export default defineContentScript({
 	runAt: "document_idle",
-	matches: ["https://shinycolors.enza.fun/*"],
+	matches: [GAME_HOME_URL],
 	main() {
 		const video = document.createElement("video");
 
