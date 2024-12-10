@@ -1,0 +1,18 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.7.0/schema.json",
+	"files": {
+		"ignore": [".output", ".wxt"]
+	},
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	},
+	"formatter": {
+		"enabled": true
+	}
+}
