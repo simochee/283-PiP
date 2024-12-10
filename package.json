@@ -1,5 +1,13 @@
 {
-  "version": "1.0.0",
-  "type": "module",
-  "private": true
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"postinstall": "lefthook install"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"lefthook": "^1.9.0",
+		"sort-package-json": "^2.12.0"
+	}
 }
