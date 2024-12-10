@@ -1,26 +1,22 @@
-# 283 PinP
+<p align="center"><img src="public/icons/96.png" alt="283 PiP のアイコン"></p>
+<h1 align="center">283 PiP</h1>
 
-[![chrome web store](https://img.shields.io/chrome-web-store/v/gjpjhdmdbkiabejljimbnjdpmfdonpjb)](https://chromewebstore.google.com/detail/gjpjhdmdbkiabejljimbnjdpmfdonpjb)
+<p align="center">
+<a href="https://chromewebstore.google.com/detail/gjpjhdmdbkiabejljimbnjdpmfdonpjb"><img src="https://img.shields.io/chrome-web-store/v/gjpjhdmdbkiabejljimbnjdpmfdonpjb?style=for-the-badge&logo=Google%20Chrome&logoColor=ffffff&label=Chrome%20Web%20Store&color=4285F4" alt="Chrome Web Store"></a>
+</p>
 
-enza 版のアイドルマスター シャイニーカラーズで、ゲームプレイ画面を Picture-in-Picture で表示するための拡張機能です。
+アイドルマスターシャイニーカラーズのゲーム画面を Picture-in-Picture で表示するブラウザ拡張機能。
 
-## Usage
+## ⛔️ 制限
 
-1. ご利用のブラウザへ拡張機能をインストール
-1. Picture-in-Picture で開く
-  1. 拡張機能のアイコンをクリック
-  1. ゲーム画面で右クリックし、`Picture-in-Picture で開く` を選択
-  1. ショートカットキー `Alt+P` （デフォルト）を押下
+- [Document Picture-in-Picture](https://developer.mozilla.org/en-US/docs/Web/API/Document_Picture-in-Picture_API) が必要なため Google Chrome 116 以上が必要
+- Picture-in-Picture で表示したゲーム画面ではクリックのみ可能
+- Picture-in-Picture には iframe で表示される領域は描画不可
 
-## Restriction
-
-- Picture-in-Picture でゲーム画面の操作はできません
-- Firefox は `requestPictureInPicture` メソッドがサポートされていないため利用できません
-
-## Credit
+## 📄 クレジット表示
 
 - [Wings icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/wings)
 
-## License
+## 🛡️ ライセンス
 
 MIT License
