@@ -7,7 +7,7 @@ enza 版 アイドルマスター シャイニーカラーズ のゲームプレ
 
 ## 💿 インストール
 
-[link-chrome]: https://chromewebstore.google.com/detail/gjpjhdmdbkiabejljimbnjdpmfdonpjb 'Chrome Web Store　に公開されているバージョン'
+[link-chrome]: https://chromewebstore.google.com/detail/gjpjhdmdbkiabejljimbnjdpmfdonpjb 'Chrome Web Store'
 
 [<img src="https://img.shields.io/chrome-web-store/v/gjpjhdmdbkiabejljimbnjdpmfdonpjb?style=for-the-badge&logo=Google%20Chrome&logoColor=ffffff&label=Chrome%20Web%20Store&color=4285F4" alt="Chrome Web Store" valign="middle">][link-chrome]
 
