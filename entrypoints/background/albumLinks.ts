@@ -3,6 +3,7 @@ import { findGameTab, openUrl } from "@/utils/tab";
 import { browser } from "wxt/browser";
 
 const COMMAND_PREFIX = "open-album";
+const COMMAND_ALBUM = `${COMMAND_PREFIX}_0`;
 const IDOL_ALBUMS = [
 	{
 		id: "1",
@@ -91,6 +92,14 @@ export const createAlbumLinks = () => {
 			documentUrlPatterns: [GAME_URL_MATCHER],
 		});
 
+		browser.contextMenus.create({
+			parentId: COMMAND_PREFIX,
+			id: COMMAND_ALBUM,
+			title: "イベント / スペシャル",
+			contexts: ["all"],
+			documentUrlPatterns: [GAME_URL_MATCHER],
+		});
+
 		for (const { id: unitId, unit, idols } of IDOL_ALBUMS) {
 			browser.contextMenus.create({
 				parentId: COMMAND_PREFIX,
@@ -117,7 +126,7 @@ export const createAlbumLinks = () => {
 
 		const gameTab = await findGameTab(tab);
 
-		if (info.menuItemId === COMMAND_PREFIX) {
+		if (info.menuItemId === COMMAND_ALBUM) {
 			await openUrl(new URL("/album", GAME_ORIGIN), gameTab);
 			return;
 		}
