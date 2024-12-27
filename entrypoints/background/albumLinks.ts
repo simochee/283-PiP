@@ -1,4 +1,5 @@
 import { GAME_URL_MATCHER } from "@/utils/const";
+import { findGameTab, openUrl } from "@/utils/tab";
 import { browser } from "wxt/browser";
 
 const COMMAND_PREFIX = "open-album";
@@ -111,11 +112,14 @@ export const createAlbumLinks = () => {
 		}
 	});
 
-	browser.contextMenus.onClicked.addListener((info, tab) => {
+	browser.contextMenus.onClicked.addListener(async (info, tab) => {
 		if (typeof info.menuItemId !== "string") return;
 
+		const gameTab = await findGameTab(tab);
+
 		if (info.menuItemId === COMMAND_PREFIX) {
-			// アルバムトップへ
+			await openUrl(new URL("/album", GAME_ORIGIN), gameTab);
+			return;
 		}
 
 		const [, unitId, idolId] = info.menuItemId.split("_");
@@ -132,5 +136,6 @@ export const createAlbumLinks = () => {
 		}
 
 		// アイドルアルバムへ
+		await openUrl(new URL(`/idolAlbum/${idolId}`, GAME_ORIGIN), gameTab);
 	});
 };
