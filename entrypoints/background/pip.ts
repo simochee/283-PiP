@@ -41,7 +41,8 @@ export const openPictureInPicture = async (tab: Tabs.Tab | undefined) => {
 
 			pipWindow.document.body.appendChild(video);
 
-			const handlePointerEvent = (e: PointerEvent) => {
+			/** PiP 内のポインター位置を Document の位置に調整する */
+			const adjustClientRect = (clientX: number, clientY: number) => {
 				const videoRect = video.getBoundingClientRect();
 				const canvasRect = canvas.getBoundingClientRect();
 
@@ -58,20 +59,45 @@ export const openPictureInPicture = async (tab: Tabs.Tab | undefined) => {
 				const top = videoRect.top + (videoRect.height - height) / 2;
 				const left = videoRect.left + (videoRect.width - width) / 2;
 
-				const x = (e.clientX - left) / width;
-				const y = (e.clientY - top) / height;
+				const x = (clientX - left) / width;
+				const y = (clientY - top) / height;
+
+				return {
+					x: canvasRect.left + canvasRect.width * x,
+					y: canvasRect.top + canvasRect.height * y,
+				};
+			};
+
+			// クリックイベントをゲーム本体へ伝播させる
+			const handlePointerEvent = (e: PointerEvent) => {
+				const { x, y } = adjustClientRect(e.clientX, e.clientY);
 
 				// Canvas の座標に変換してイベントを発火
 				canvas.dispatchEvent(
-					new MouseEvent(e.type, {
-						clientX: canvasRect.left + canvasRect.width * x,
-						clientY: canvasRect.top + canvasRect.height * y,
-					}),
+					new MouseEvent(e.type, { clientX: x, clientY: y }),
 				);
 			};
 
 			video.addEventListener("pointerdown", handlePointerEvent);
 			video.addEventListener("pointerup", handlePointerEvent);
+
+			// ホイールイベントをゲーム本体へ伝播させる
+			const handleWheelEvent = (e: WheelEvent) => {
+				const { x, y } = adjustClientRect(e.clientX, e.clientY);
+
+				canvas.dispatchEvent(
+					new WheelEvent("wheel", {
+						clientX: x,
+						clientY: y,
+						deltaX: e.deltaX,
+						deltaY: e.deltaY,
+						deltaZ: e.deltaZ,
+						deltaMode: e.deltaMode,
+					}),
+				);
+			};
+
+			video.addEventListener("wheel", handleWheelEvent);
 		},
 	});
 };
