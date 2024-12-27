@@ -34,6 +34,7 @@ export const openPictureInPicture = async (tab: Tabs.Tab | undefined) => {
 			// スタイルを指定
 			pipWindow.document.body.style.margin = "0";
 			pipWindow.document.body.style.backgroundColor = "#252628";
+			pipWindow.document.body.style.overflow = "hidden";
 			video.style.position = "absolute";
 			video.style.width = "100%";
 			video.style.height = "100%";
