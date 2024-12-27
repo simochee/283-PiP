@@ -68,18 +68,35 @@ export const openPictureInPicture = async (tab: Tabs.Tab | undefined) => {
 				};
 			};
 
-			// クリックイベントをゲーム本体へ伝播させる
-			const handlePointerEvent = (e: PointerEvent) => {
+			// ポインター・マウスに関連のイベントをゲーム本体へ伝播させる
+			const handlePointerEvent = (e: PointerEvent | MouseEvent) => {
 				const { x, y } = adjustClientRect(e.clientX, e.clientY);
 
 				// Canvas の座標に変換してイベントを発火
 				canvas.dispatchEvent(
-					new MouseEvent(e.type, { clientX: x, clientY: y }),
+					new MouseEvent(e.type, {
+						clientX: x,
+						clientY: y,
+						movementX: e.movementX,
+						movementY: e.movementY,
+					}),
 				);
 			};
 
-			video.addEventListener("pointerdown", handlePointerEvent);
-			video.addEventListener("pointerup", handlePointerEvent);
+			for (const type of [
+				"pointerdown",
+				"pointerup",
+				"pointermove",
+				"pointercancel",
+				"pointerleave",
+				"mousedown",
+				"mouseup",
+				"mousemove",
+				"mouseout",
+				"mouseover",
+			] as const) {
+				video.addEventListener(type, handlePointerEvent);
+			}
 
 			// ホイールイベントをゲーム本体へ伝播させる
 			const handleWheelEvent = (e: WheelEvent) => {
