@@ -81,6 +81,16 @@ const IDOL_ALBUMS = [
 			{ id: "28", name: "郁田はるき" },
 		],
 	},
+	{
+		id: "800",
+		unit: "【推しの子】コラボ",
+		idols: [
+			{ id: "801", name: "ルビー" },
+			{ id: "802", name: "有馬かな" },
+			{ id: "803", name: "MEMちょ" },
+			{ id: "804", name: "黒川あかね" },
+		],
+	},
 ];
 
 export const createAlbumLinks = () => {
