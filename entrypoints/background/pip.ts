@@ -48,7 +48,7 @@ export const openPictureInPicture = async (tab: Tabs.Tab | undefined) => {
 				const canvasRect = canvas.getBoundingClientRect();
 
 				// object-fit: contain の要素上の位置を計算
-				const aspectRatio = 16 / 9;
+				const aspectRatio = canvas.width / canvas.height;
 				const width =
 					videoRect.width / videoRect.height > aspectRatio
 						? videoRect.height * aspectRatio
