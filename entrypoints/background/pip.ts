@@ -34,6 +34,7 @@ export const openPictureInPicture = async (tab: Tabs.Tab | undefined) => {
 			// スタイルを指定
 			pipWindow.document.body.style.margin = "0";
 			pipWindow.document.body.style.backgroundColor = "#252628";
+			pipWindow.document.body.style.overflow = "hidden";
 			video.style.position = "absolute";
 			video.style.width = "100%";
 			video.style.height = "100%";
@@ -41,12 +42,13 @@ export const openPictureInPicture = async (tab: Tabs.Tab | undefined) => {
 
 			pipWindow.document.body.appendChild(video);
 
-			const handlePointerEvent = (e: PointerEvent) => {
+			/** PiP 内のポインター位置を Document の位置に調整する */
+			const adjustClientRect = (clientX: number, clientY: number) => {
 				const videoRect = video.getBoundingClientRect();
 				const canvasRect = canvas.getBoundingClientRect();
 
 				// object-fit: contain の要素上の位置を計算
-				const aspectRatio = 16 / 9;
+				const aspectRatio = canvas.width / canvas.height;
 				const width =
 					videoRect.width / videoRect.height > aspectRatio
 						? videoRect.height * aspectRatio
@@ -58,20 +60,62 @@ export const openPictureInPicture = async (tab: Tabs.Tab | undefined) => {
 				const top = videoRect.top + (videoRect.height - height) / 2;
 				const left = videoRect.left + (videoRect.width - width) / 2;
 
-				const x = (e.clientX - left) / width;
-				const y = (e.clientY - top) / height;
+				const x = (clientX - left) / width;
+				const y = (clientY - top) / height;
+
+				return {
+					x: canvasRect.left + canvasRect.width * x,
+					y: canvasRect.top + canvasRect.height * y,
+				};
+			};
+
+			// ポインター・マウスに関連のイベントをゲーム本体へ伝播させる
+			const handlePointerEvent = (e: PointerEvent | MouseEvent) => {
+				const { x, y } = adjustClientRect(e.clientX, e.clientY);
 
 				// Canvas の座標に変換してイベントを発火
 				canvas.dispatchEvent(
 					new MouseEvent(e.type, {
-						clientX: canvasRect.left + canvasRect.width * x,
-						clientY: canvasRect.top + canvasRect.height * y,
+						clientX: x,
+						clientY: y,
+						movementX: e.movementX,
+						movementY: e.movementY,
 					}),
 				);
 			};
 
-			video.addEventListener("pointerdown", handlePointerEvent);
-			video.addEventListener("pointerup", handlePointerEvent);
+			for (const type of [
+				"pointerdown",
+				"pointerup",
+				"pointermove",
+				"pointercancel",
+				"pointerleave",
+				"mousedown",
+				"mouseup",
+				"mousemove",
+				"mouseout",
+				"mouseover",
+			] as const) {
+				video.addEventListener(type, handlePointerEvent);
+			}
+
+			// ホイールイベントをゲーム本体へ伝播させる
+			const handleWheelEvent = (e: WheelEvent) => {
+				const { x, y } = adjustClientRect(e.clientX, e.clientY);
+
+				canvas.dispatchEvent(
+					new WheelEvent("wheel", {
+						clientX: x,
+						clientY: y,
+						deltaX: e.deltaX,
+						deltaY: e.deltaY,
+						deltaZ: e.deltaZ,
+						deltaMode: e.deltaMode,
+					}),
+				);
+			};
+
+			video.addEventListener("wheel", handleWheelEvent);
 		},
 	});
 };

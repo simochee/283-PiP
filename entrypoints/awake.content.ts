@@ -1,4 +1,4 @@
-import { GAME_HOME_URL } from "@/utils/const";
+import { GAME_URL_MATCHER } from "@/utils/const";
 import { log } from "@/utils/logger";
 
 /**
@@ -6,7 +6,7 @@ import { log } from "@/utils/logger";
  */
 export default defineContentScript({
 	runAt: "document_start",
-	matches: [GAME_HOME_URL],
+	matches: [GAME_URL_MATCHER],
 	main() {
 		log("Hi, producer!");
 		log("Open Picture-in-Picture by clicking the extension icon.");

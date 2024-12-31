@@ -10,6 +10,7 @@ enza 版 アイドルマスター シャイニーカラーズ のゲームプレ
 [link-chrome]: https://chromewebstore.google.com/detail/gjpjhdmdbkiabejljimbnjdpmfdonpjb 'Chrome Web Store'
 
 [<img src="https://img.shields.io/chrome-web-store/v/gjpjhdmdbkiabejljimbnjdpmfdonpjb?style=for-the-badge&logo=Google%20Chrome&logoColor=ffffff&label=Chrome%20Web%20Store&color=4285F4" alt="Chrome Web Store" valign="middle">][link-chrome]
+[<img src="https://img.shields.io/chrome-web-store/users/gjpjhdmdbkiabejljimbnjdpmfdonpjb?style=for-the-badge" alt="Users" valign="middle">][link-chrome]
 
 対応ブラウザ：
 [<img src="https://raw.githubusercontent.com/alrra/browser-logos/90fdf03c/src/chrome/chrome.svg" width="24" alt="Chrome" valign="middle">][link-chrome]
@@ -21,6 +22,7 @@ enza 版 アイドルマスター シャイニーカラーズ のゲームプレ
 
 - シャニマスのゲーム画面を小窓で表示
 - 小窓からゲーム画面を操作
+- シャニマス内の各画面へのリンク
 
 ## 🖼️ スクリーンショット
 
@@ -30,8 +32,7 @@ enza 版 アイドルマスター シャイニーカラーズ のゲームプレ
 ## ⛔️ 制限
 
 - [Document Picture-in-Picture](https://developer.mozilla.org/en-US/docs/Web/API/Document_Picture-in-Picture_API) が必要なため Google Chrome 116 以上が必要
-- Picture-in-Picture で表示したゲーム画面ではクリックのみ可能
-- Picture-in-Picture には iframe で表示される領域は描画不可
+- Picture-in-Picture にはゲーム画面のうち HTML で描画される領域は表示不可
 
 ## 🪪 クレジット表示
 
