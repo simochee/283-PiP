@@ -32,8 +32,7 @@ enza 版 アイドルマスター シャイニーカラーズ のゲームプレ
 ## ⛔️ 制限
 
 - [Document Picture-in-Picture](https://developer.mozilla.org/en-US/docs/Web/API/Document_Picture-in-Picture_API) が必要なため Google Chrome 116 以上が必要
-- Picture-in-Picture で表示したゲーム画面ではクリックのみ可能
-- Picture-in-Picture には iframe で表示される領域は描画不可
+- Picture-in-Picture にはゲーム画面のうち HTML で描画される領域は表示不可
 
 ## 🪪 クレジット表示
 
