@@ -1,5 +1,5 @@
-import { COMMAND_START_PIP, GAME_URL_MATCHER } from "@/utils/const";
 import { browser } from "wxt/browser";
+import { COMMAND_START_PIP, GAME_URL_MATCHER } from "@/utils/const";
 import { openPictureInPicture } from "./pip";
 
 export const createContextMenu = () => {

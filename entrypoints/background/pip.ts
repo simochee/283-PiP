@@ -1,4 +1,4 @@
-import { type Tabs, browser } from "wxt/browser";
+import { browser, type Tabs } from "wxt/browser";
 
 export const openPictureInPicture = async (tab: Tabs.Tab | undefined) => {
 	if (!tab || tab.id == null || tab.url == null) return;

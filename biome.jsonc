@@ -1,9 +1,14 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.7.0/schema.json",
-	"files": {
-		"ignore": [".output", ".wxt"]
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": false
 	},
-	"organizeImports": {
+	"files": {
+		"ignoreUnknown": false
+	},
+	"formatter": {
 		"enabled": true
 	},
 	"linter": {
@@ -12,7 +17,12 @@
 			"recommended": true
 		}
 	},
-	"formatter": {
-		"enabled": true
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
 	}
 }

@@ -1,6 +1,6 @@
+import { browser } from "wxt/browser";
 import { GAME_URL_MATCHER } from "@/utils/const";
 import { findGameTab, openUrl } from "@/utils/tab";
-import { browser } from "wxt/browser";
 
 const COMMAND_PREFIX = "open-album";
 const COMMAND_ALBUM = `${COMMAND_PREFIX}_0`;

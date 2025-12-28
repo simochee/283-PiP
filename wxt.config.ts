@@ -1,5 +1,5 @@
 import { defineConfig } from "wxt";
-import pkg from "./package.json" assert { type: "json" };
+import pkg from "./package.json" with { type: "json" };
 import { COMMAND_START_PIP, GAME_URL_MATCHER } from "./utils/const";
 
 export default defineConfig({
@@ -20,7 +20,7 @@ export default defineConfig({
 			},
 		},
 	},
-	runner: {
+	webExt: {
 		startUrls: ["https://shinycolors.enza.fun"],
 	},
 });

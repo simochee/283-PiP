@@ -1,5 +1,5 @@
+import { browser, type Tabs } from "wxt/browser";
 import { GAME_ORIGIN } from "@/utils/const";
-import { type Tabs, browser } from "wxt/browser";
 
 export const findGameTab = async (tab: Tabs.Tab | undefined) => {
 	// 現在のタブがゲーム画面である

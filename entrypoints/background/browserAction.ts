@@ -1,5 +1,5 @@
-import { GAME_HOME_URL, GAME_ORIGIN, GAME_URL_MATCHER } from "@/utils/const";
 import { browser } from "wxt/browser";
+import { GAME_HOME_URL, GAME_ORIGIN, GAME_URL_MATCHER } from "@/utils/const";
 import { openPictureInPicture } from "./pip";
 
 export const handleClickIcon = () => {
