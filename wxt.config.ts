@@ -23,4 +23,5 @@ export default defineConfig({
 	webExt: {
 		startUrls: ["https://shinycolors.enza.fun"],
 	},
+	modules: ["@wxt-dev/auto-icons"],
 });
