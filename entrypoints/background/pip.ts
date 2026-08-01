@@ -25,10 +25,24 @@ export const openPictureInPicture = async (tab: Tabs.Tab | undefined) => {
 				return;
 			}
 
+			// Canvas と同じアスペクト比 (16:9) になるよう PiP ウィンドウのサイズを計算する
+			const aspectRatio =
+				canvas.width > 0 && canvas.height > 0
+					? canvas.width / canvas.height
+					: 16 / 9;
+			// 画面の 1/3 程度を目安にしつつ、小さくなりすぎないようにする
+			const maxWidth = Math.max(480, Math.round(window.screen.availWidth / 3));
+			const maxHeight = Math.max(
+				270,
+				Math.round(window.screen.availHeight / 3),
+			);
+			const width = Math.round(Math.min(maxWidth, maxHeight * aspectRatio));
+			const height = Math.round(width / aspectRatio);
+
 			// @ts-expect-error documentPictureInPicture is not defined
 			const pipWindow = (await documentPictureInPicture.requestWindow({
-				width: 360,
-				height: 270,
+				width,
+				height,
 			})) as typeof window;
 
 			// スタイルを指定
